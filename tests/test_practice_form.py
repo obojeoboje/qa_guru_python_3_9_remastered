@@ -15,7 +15,7 @@ def test_filled_form():
 
     practice_form.select_gender('Male')
 
-    practice_form.select_birthday(day='27', month='4', year='1999')
+    practice_form.select_birthday(day='25', month='4', year='1999')
 
     practice_form.input_subject('Computer Science')
 

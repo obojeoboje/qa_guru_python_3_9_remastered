@@ -1,44 +1,25 @@
-from demoqa_tests.model.pages import practice_form
+from datetime import date
+
+from demoqa_tests.modules.data.user import User
+from demoqa_tests.modules.pages.practice_form import PracticeForm
 
 
-def test_filled_form():
+def test_registration_user():
+    practice_form = PracticeForm()
+    user = User(
+        first_name='Aleksandr',
+        last_name='Privalov',
+        email='obojealexander@gmail.com',
+        phone='1234567890',
+        address='Saint Petersburg',
+        birthday=date(1999, 5, 27),
+        gender='Male',
+        subject='Computer Science',
+        hobbies='Music',
+        image='picture.jpg',
+        state='NCR',
+        city='Delhi')
+
     practice_form.open_page()
-
-    # INPUT DATA
-
-    practice_form.input_info(name='Aleksandr',
-                             surname='Privalov',
-                             email='obojealexander@gmail.com',
-                             mobile='1234567890',
-                             address='Saint Petersburg'
-                             )
-
-    practice_form.select_gender('Male')
-
-    practice_form.select_birthday(day='27', month='4', year='1999')
-
-    practice_form.input_subject('Computer Science')
-
-    practice_form.select_hobbies('Music', 'Sports')
-
-    practice_form.upload_picture('resources/picture.jpg')
-
-    practice_form.select_state('NCR')
-    practice_form.select_city('Delhi')
-
-    practice_form.submit()
-
-    # ASSERT
-
-    practice_form.assert_of_registered_user(
-        'Aleksandr Privalov',
-        'obojealexander@gmail.com',
-        'Male',
-        '1234567890',
-        '27 May,1999',
-        'Computer Science',
-        'Music, Sports',
-        'picture.jpg',
-        'Saint Petersburg',
-        'NCR Delhi'
-    )
+    practice_form.fill(user).submit()
+    practice_form.assert_results_registration(user)

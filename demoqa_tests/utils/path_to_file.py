@@ -1,9 +1,6 @@
-from selene.support.shared import browser
 import os
-import tests
+import tests.resources
 
 
-def create_path(selector, path):
-    browser.element(selector).set_value(
-        os.path.abspath(os.path.join(os.path.dirname(tests.__file__), path))
-    )
+def generate_path_upload(name_file):
+    return os.path.abspath(os.path.join(os.path.dirname(tests.resources.__file__), name_file))

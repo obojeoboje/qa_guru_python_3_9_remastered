@@ -23,3 +23,4 @@ def test_registration_user():
     practice_form.open_page()
     practice_form.fill(user).submit()
     practice_form.assert_results_registration(user)
+    practice_form.proceed_attachments()

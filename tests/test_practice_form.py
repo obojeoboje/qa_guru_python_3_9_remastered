@@ -26,3 +26,4 @@ def test_registration_user():
         practice_form.fill(user).submit()
     with allure.step('Проверить результаты с введенными нами выше'):
         practice_form.assert_results_registration(user)
+        practice_form.proceed_attachments()

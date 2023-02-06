@@ -1,13 +1,11 @@
 from selene import have
 from selene.support.shared import browser
-
 from demoqa_tests.modules.controls.check_boxes import Checkboxes
 from demoqa_tests.modules.controls.date_picker import Datepicker
 from demoqa_tests.modules.controls.drop_down import Dropdown
 from demoqa_tests.modules.controls.radio_button import Radiobutton
 from demoqa_tests.utils import path_to_file, date_config
 
-from demoqa_tests.utils import attach
 
 class PracticeForm:
     def open_page(self):
@@ -94,8 +92,3 @@ class PracticeForm:
             user.address,
             user.state + ' ' + user.city))
         return self
-
-    def proceed_attachments(self):
-        attach.add_html(browser)
-        attach.add_screenshot(browser)
-        attach.add_logs(browser)

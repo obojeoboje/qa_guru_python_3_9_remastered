@@ -1,5 +1,5 @@
 from datetime import date
-
+import allure
 from demoqa_tests.modules.data.user import User
 from demoqa_tests.modules.pages.practice_form import PracticeForm
 
@@ -20,7 +20,9 @@ def test_registration_user():
         state='NCR',
         city='Delhi')
 
-    practice_form.open_page()
-    practice_form.fill(user).submit()
-    practice_form.assert_results_registration(user)
-    practice_form.proceed_attachments()
+    with allure.step('Открыть форму регистрации'):
+        practice_form.open_page()
+    with allure.step('Заполнить форму'):
+        practice_form.fill(user).submit()
+    with allure.step('Проверить результаты с введенными нами выше'):
+        practice_form.assert_results_registration(user)

@@ -3,6 +3,7 @@ from selene.support.shared import browser
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from demoqa_tests.utils import attach
 
 @pytest.fixture(scope="function", autouse=True)
 def configure_browser():
@@ -26,4 +27,8 @@ def configure_browser():
     browser.config.window_width = 1920
     browser.config.window_height = 1080
     yield
+    attach.add_html(browser)
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
     browser.quit()
